@@ -1,0 +1,15 @@
+.Characters {
+  display: grid;
+  justify-self: center;
+  grid-template-columns: repeat(4, 20%);
+  column-gap: 2rem;
+  justify-items: center;
+  justify-content: center;
+}
+
+.Characters__card {
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 6px;
+  margin: 0.5rem;
+}
