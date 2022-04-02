@@ -37,6 +37,7 @@ const Characters = () => {
   const cardClass = `${styles.Characters__card}`;
 
   const handleSearch = useCallback(() => {
+    console.log(searchInputRef.current.value);
     setSearch(searchInputRef.current.value);
   }, []);
 
@@ -58,7 +59,7 @@ const Characters = () => {
           <li>{favorite.name}</li>
         </div>
       ))}
-      <Search search={search} handleSearch={handleSearch} ref={searchInputRef} />
+      <Search search={search} handleSearch={handleSearch} inputRef={searchInputRef} />
       <div className={styles.Characters}>
         {filteredCharacters.map(character => (
           <div className={cardClass} key={character.id}>

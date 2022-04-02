@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Search = ({ search, ref, handleSearch }) => {
+const Search = ({ search, inputRef, handleSearch }) => {
   return (
     <div>
       <input
-        ref={ref}
+        ref={inputRef}
         type="text"
         value={search}
         onChange={handleSearch}
