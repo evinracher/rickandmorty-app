@@ -6,6 +6,7 @@ import React, {
   useRef,
   useCallback
 } from 'react';
+import useCharacters from '../../hooks/useCharacters';
 import Search from '../Search';
 import styles from './Characters.module.css';
 
@@ -29,7 +30,7 @@ const favoriteReducer = (state, action) => {
 const API = 'https://rickandmortyapi.com/api/character';
 
 const Characters = () => {
-  const [characters, setCharacters] = useState([]);
+  const characters = useCharacters(API);
   const [state, dispatch] = useReducer(favoriteReducer, initialState);
   const [search, setSearch] = useState('');
   const searchInputRef = useRef(null);
@@ -50,14 +51,6 @@ const Characters = () => {
       character.name.toLowerCase().includes(search.toLowerCase()
       ));
   }, [search, characters]);
-
-
-  useEffect(() => {
-    fetch(API)
-      .then(response => response.json())
-      .then(data => setCharacters(data.results))
-      .catch(error => console.error(error));
-  }, []);
 
   return (
     <div>
