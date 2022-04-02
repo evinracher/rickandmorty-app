@@ -1,4 +1,12 @@
-import React, { useState, useEffect, useReducer, useMemo } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+  useMemo,
+  useRef,
+  useCallback
+} from 'react';
+import Search from '../Search';
 import styles from './Characters.module.css';
 
 const initialState = {
@@ -28,9 +36,9 @@ const Characters = () => {
 
   const cardClass = `${styles.Characters__card}`;
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     setSearch(searchInputRef.current.value);
-  };
+  }, []);
 
   const handleAddToFavorites = (favorite) => {
     dispatch({ type: 'ADD_TO_FAVORITES', payload: favorite });
@@ -59,14 +67,7 @@ const Characters = () => {
           <li>{favorite.name}</li>
         </div>
       ))}
-      <div>
-        <input
-          ref={searchInputRef}
-          type="text"
-          value={search}
-          onChange={handleSearch}
-          placeholder="Search a character" />
-      </div>
+      <Search search={search} handleSearch={handleSearch} ref={searchInputRef} />
       <div className={styles.Characters}>
         {filteredCharacters.map(character => (
           <div className={cardClass} key={character.id}>
