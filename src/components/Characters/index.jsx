@@ -24,11 +24,12 @@ const Characters = () => {
   const [characters, setCharacters] = useState([]);
   const [state, dispatch] = useReducer(favoriteReducer, initialState);
   const [search, setSearch] = useState('');
+  const searchInputRef = useRef(null);
 
   const cardClass = `${styles.Characters__card}`;
 
-  const handleSearch = (event) => {
-    setSearch(event.target.value);
+  const handleSearch = () => {
+    setSearch(searchInputRef.current.value);
   };
 
   const handleAddToFavorites = (favorite) => {
@@ -59,7 +60,12 @@ const Characters = () => {
         </div>
       ))}
       <div>
-        <input type="text" value={search} onChange={handleSearch} placeholder="Search a character" />
+        <input
+          ref={searchInputRef}
+          type="text"
+          value={search}
+          onChange={handleSearch}
+          placeholder="Search a character" />
       </div>
       <div className={styles.Characters}>
         {filteredCharacters.map(character => (
