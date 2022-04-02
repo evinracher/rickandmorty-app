@@ -4,7 +4,7 @@ const Search = ({ search, ref, handleSearch }) => {
   return (
     <div>
       <input
-        ref={searchInputRef}
+        ref={ref}
         type="text"
         value={search}
         onChange={handleSearch}

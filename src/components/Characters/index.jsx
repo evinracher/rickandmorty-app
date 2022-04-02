@@ -1,6 +1,5 @@
 import React, {
   useState,
-  useEffect,
   useReducer,
   useMemo,
   useRef,
@@ -44,7 +43,6 @@ const Characters = () => {
   const handleAddToFavorites = (favorite) => {
     dispatch({ type: 'ADD_TO_FAVORITES', payload: favorite });
   };
-
 
   const filteredCharacters = useMemo(() => {
     return characters.filter(character =>
